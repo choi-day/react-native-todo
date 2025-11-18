@@ -3,7 +3,7 @@ import styled, {ThemeProvider} from 'styled-components/native'
 import {theme} from './theme';
 
 const Container = styled.View`
-    flex: 1,
+    flex: 1;
     background-color: ${({theme}) => theme.background};
     align-items: center;
     justify-content: center;
