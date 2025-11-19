@@ -56,6 +56,11 @@ export default function App() {
         currentTasks[id]['completed'] = !currentTasks[id]['completed'];
         setTasks(currentTasks);
     };
+    const _updateTask = item => {
+        const currentTasks = Object.assign({}, tasks);
+        currentTasks[item.id] = item;
+        setTasks(currentTasks);
+    };
 
     const _handleTextChange = text => {
         setNewTask(text);
@@ -84,8 +89,9 @@ export default function App() {
                     item={item} 
                     deleteTask={_deleteTask}
                     toggleTask={_toggleTask}
-                    />))
-                    }
+                    updateTask={_updateTask}
+                    />
+                ))}
                 </List>
             </Container>
         </ThemeProvider>
