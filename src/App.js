@@ -29,7 +29,7 @@ const List = styled.ScrollView`
 
 export default function App() {
     const width = Dimensions.get('window').width;
-    
+
     const [newTask, setNewTask] = useState('');
     const [tasks, setTasks] = useState({
         '1': { id: '1', text: 'Hanbit' , completed: false },
@@ -44,12 +44,12 @@ export default function App() {
             [ID]: { id: ID, text: newTask, completed: false },
         };
         setNewTask('');
-        saveTasks({ ...tasks, ...newTaskObject });
+        setTasks({ ...tasks, ...newTaskObject });
     };
     const _deleteTask = id => {
         const currentTasks = Object.assign({}, tasks);
         delete currentTasks[id];
-        saveTasks(currentTasks);
+        setTasks(currentTasks);
     };
 
     const _handleTextChange = text => {
