@@ -5,24 +5,32 @@ import PropTypes from 'prop-types';
 import { images } from '../images';
 
 const Icon = styled.Image`
-  tint-color: ${({ theme, completed }) =>
+    tint-color: ${({ theme, completed }) =>
     completed ? theme.done : theme.text};
-  width: 30px;
-  height: 30px;
-  margin: 10px;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
 `;
 
-const IconButton = ({ type, onPressOut}) => {
-  return (
-    <TouchableOpacity onPressOut={onPressOut}>
-      <Icon source={type}/>
-    </TouchableOpacity>
-  );
+const IconButton = ({ type, onPressOut, id}) => {
+    const _onPressOut = () => {
+        onPressOut(id);
+    }
+    return (
+        <TouchableOpacity onPressOut={_onPressOut}>
+            <Icon source={type}/>
+        </TouchableOpacity>
+    );
 };
 
+IconButton.defaultProps = {
+    onPressOut: () => {},
+}
+
 IconButton.propTypes = {
-  type: PropTypes.oneOf(Object.values(images)).isRequired,
-  onPressOut: PropTypes.func,
+    type: PropTypes.oneOf(Object.values(images)).isRequired,
+    onPressOut: PropTypes.func,
+    id: PropTypes.string,
 };
 
 export default IconButton;
