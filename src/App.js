@@ -52,7 +52,6 @@ export default function App() {
             [ID]: { id: ID, text: newTask, completed: false },
         };
         setNewTask('');
-        setTasks({ ...tasks, ...newTaskObject });
         _saveTasks({ ...tasks, ...newTaskObject });
     };
     const _deleteTask = id => {
