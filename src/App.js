@@ -42,7 +42,10 @@ export default function App() {
         error(e);
         }
     }
-
+    const _loadTasks = async () => {
+        const loadedTasks = await AsyncStorage.getItem('tasks');
+        setTasks(JSON.parse(loadedTasks || '{}'));
+    };
     const _addTask = () => {
         const ID = Date.now().toString();
         const newTaskObject = {
